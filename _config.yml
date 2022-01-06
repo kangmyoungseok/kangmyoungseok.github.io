@@ -32,7 +32,7 @@ words_per_minute         : 200
 comments:
   provider               : "disqus" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
   disqus:
-    shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname            :  "myoungseok"  # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
@@ -104,7 +104,7 @@ analytics:
 author:
   name             : "Kang MyoungSeok"
   avatar           : "/assets/images/avatar.jpg"
-  bio              : "Blog for Studying<br> Computer Science Engineering<br> Cyber Security"
+  bio              : "Blog for Studying<br> Computer Science Engineering<br>and Cyber Security"
   location         : "Seoul, South Korea"
   email            : "kms00129@naver.com"
   links:
