@@ -2,7 +2,7 @@
 layout: single
 title: "[API] Coinmarketcap API"
 categories:
-  - API
+  - python
 tags:
   - API
   - python
