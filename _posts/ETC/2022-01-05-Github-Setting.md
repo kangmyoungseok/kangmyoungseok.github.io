@@ -129,7 +129,7 @@ author_profile: true
  ```
  를 입력해 준다.
 
- ![image](https://user-images.githubusercontent.com/33647663/148941773-80865e2f-d7e6-4c5b-a2da-4b6fdef92c1d.png)
+ ![image](https://user-images.githubusercontent.com/33647663/148945191-9cd18abe-a946-43ea-acf7-12c29ab0732b.png)
 
  ```git push```를 입력하면 username을 입력하고, 비밀번호는 위에서 말한 Access token을 입력해 주면 된다.
 
