@@ -16,7 +16,7 @@ author_profile: true
 {: .notice--warning}
 
 # 깃허브 계정 연동
- ## Access token 생성
+## Access token 생성
  우분투에서 작업한 코드들을 깃허브에 올리고, 연동하는 방법에 대해서 설명해 드리겠습니다.
 
 
@@ -78,12 +78,29 @@ author_profile: true
  ```
 
  자신의 깃허브 주소를 입력해 봤을때 https://github.com/[이름] 이부분을 이름으로 입력하면 된다.
-
- 그리고 아래 명령어를 입력하면 한번 연동을 성공하면 캐싱을 해서 다음부터는 access token을 계속 입력하지 않아도 된다.
+ 
+ 예시로 나의 경우 github의 주소가 https://github.com/kangmyoungseok/ 이므로 다음과 같이 적었다.
  ```md
- git config credential.helper store
+ git config --global user.name kangmyoungseok
+ git config --global user.email kms00129@naver.com 
  ```
 
+ 그리고 아래 명령어를 입력하면 한번 연동을 성공하면 캐싱을 해서 다음부터는 access token을 계속 입력하지 않아도 된다.
+
+ ```md
+ git config --global credential.helper store
+ ```
+ 
+ 위의 명령이 잘 입력되었는지 다음과 같이 확인 할 수 있다.
+
+ ```md
+ git config --global --list
+ ```
+
+ ![image](https://user-images.githubusercontent.com/33647663/148944570-ae42246e-17da-4463-ad90-098373a2c208.png)
+
+ 참고로 ```vi ~/.gitconfig``` 로 파일에서 수정할 수도 있다.
+ 
  이제 자신이 로컬에서 작업한 내용을 깃허브 서버로 업로드 해보겠다.
  
  파일을 업로드 할 때는
@@ -135,4 +152,4 @@ author_profile: true
  변경 된 모습
  ![image](https://user-images.githubusercontent.com/33647663/148943360-fba4aa3b-e084-41d3-9d6c-faacdc655da9.png)
 
- 
+
