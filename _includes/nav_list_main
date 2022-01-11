@@ -164,8 +164,8 @@
             <span class="nav__sub-title">ETC</span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "xxxxx" %}
-                        <li><a href="/categories/xxxx" class="">xxxxx ({{category[1].size}})</a></li>
+                    {% if category[0] == "etc" %}
+                        <li><a href="/categories/etc" class="">etc ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
