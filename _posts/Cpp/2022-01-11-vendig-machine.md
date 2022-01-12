@@ -156,7 +156,7 @@ void Widget::on_pbReset_clicked()
  - 반환을 하고나서 setControl이 실행 안되서 - 돈이 가능 
  - msgBox.exec함수가 실행되고 display가 나오니까 누르고 나서 ok를 눌러야 돈이 바뀜
  
- ## 수정사항
+## 수정사항
    - 동전 개수가 늘어날 것을 대비해서 CoinList 배열로 만들어 줘서, 만약 1000원짜리 동전이 추가 된다면 배열에 원소 하나만 추가해 주면 된다.
    ```cpp
    const int COIN_LIST[] = {500,100,50,10};
