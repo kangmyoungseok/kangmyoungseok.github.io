@@ -108,6 +108,13 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "cloud" %}
+                        <li><a href="/categories/cloud" class="">클라우드 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
             <!------------------------- 4. Security --------------------->
             <span class="nav__sub-title">Security</span>
             <ul>
