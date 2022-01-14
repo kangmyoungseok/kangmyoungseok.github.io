@@ -185,11 +185,12 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "xxxx" %}
-                        <li><a href="/categories/xxxxxx" class="">xxxxx ({{category[1].size}})</a></li>
+                    {% if category[0] == "error" %}
+                        <li><a href="/categories/error" class="">에러 처리 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
+            
       </li>
   </ul>
 </nav>
