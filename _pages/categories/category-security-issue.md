@@ -1,5 +1,5 @@
 ---
-title: "보안 동향"
+title: "보안 이슈 및 기술"
 layout: archive
 permalink: categories/security-issue
 author_profile: true
