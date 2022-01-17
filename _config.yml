@@ -108,7 +108,7 @@ author:
   location         : "Seoul, South Korea"
   email            : "kms00129@naver.com"
   links:
-    - label: "Email"
+    - label: "kms00129@naver.com"
       icon: "fas fa-fw fa-envelope-square"
       url: "kms00129@naver.com"
     - label: "Website"
