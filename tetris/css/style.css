@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+.game-text {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    left: 0;
+    top: 0;
+    color: #fff;
+    font-size: 50px;
+}
+
+.game-text > button {
+    padding: 0.5rem 1rem;
+    color: #fff;
+    background : blue;
+    border: none;
+    cursor: pointer;
+}
+
+.score {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 2rem;
+}
+
+.playground > ul {
+    border: 1px solid #333;
+    width: 250px;
+    height: auto;
+    margin: 0 auto;
+
+}
+
+.playground > ul > li {
+    width: 100%;
+    height: 23px;
+}
+
+.playground > ul > li > ul {
+    display: flex;
+}
+
+.playground > ul > li > ul > li{
+    width : 25px;
+    height : 23px;
+    outline: 1px solid #ccc;
+}
+
+.square {
+    background-image: url("../svg/b9.png");
+    background-position: 32px;
+}
+
+.bar {
+    background-image: url("../svg/b9.png");
+    background-position: 64px;
+}
+.tree {
+    border: none;
+    background-image: url("../svg/b9.png");
+    background-position: 96px;
+}
+.zee {
+    background-image: url("../svg/b9.png");
+    background-position: 128px;
+}
+.elLeft {
+    background-image: url("../svg/b9.png");
+    background-position: 160px;
+}
+.elRight {
+    background-image: url("../svg/b9.png");
+    background-position: 190px;
+}
