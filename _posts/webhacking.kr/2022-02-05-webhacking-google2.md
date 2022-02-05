@@ -24,11 +24,11 @@ author_profile: true
 # 문제 풀이
   현재 구글 시트에는 **읽기 전용** 기능이 켜져 있으며, 제 계정으로는 아무런 권한이 없기 때문에 수정을 할 수가 없습니다. A1셀에 적혀있는 함수는 다음과 같습니다.
 
-  ```xlsx
+  ```python
   =REPLACE(IMPORTRANGE("https://docs.google.com/spreadsheets/d/1x7b8Wwp3jJAr6sgEG8RmuZOh-d7gpSmYvH9tmXWDq_c/edit","A1"),6,19,REPT("?",19-6))
   ```
 
-  IMPORTRANGE 함수는 (URL,CELL) 과 같이 부르면 외부의 URL에 있는 데이터를 불러 올 수 있는 기능으로 현재 해당함수를 통해서 ```https://docs.google.com/spreadsheets/d/1x7b8Wwp3jJAr6sgEG8RmuZOh-d7gpSmYvH9tmXWDq_c/edit```경로에 있는 스프레드 시트의 A1셀의 데이터를 불러온 것입니다. 
+  IMPORTRANGE 함수는 (URL,CELL) 과 같이 부르면 외부의 URL에 있는 데이터를 불러 올 수 있는 기능으로 현재 해당함수를 통해서 ```https://docs.google.com/spreadsheets/d/1x7b8Wwp3jJAr6sgEG8RmuZOh-d7gpSmYvH9tmXWDq_c/edit```경로에 있는 스프레드 시트의 **A1**셀의 데이터를 불러온 것입니다. 
 
   그 이후 REPLACE 함수를 통해서 6-19번째 문자열들을 **?**로 바꿔서 플래그가 숨겨져 있는 상태입니다.
 
