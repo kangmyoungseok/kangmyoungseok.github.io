@@ -106,11 +106,11 @@ author:
   avatar           : "/assets/images/avatar.jpg"
   bio              : "Blog for Studying<br> Computer Science Engineering<br>and Cyber Security"
   location         : "Seoul, South Korea"
-  email            : "kms00129@naver.com"
+  #email            : "kms00129@naver.com"
   links:
     - label: "kms00129@naver.com"
       icon: "fas fa-fw fa-envelope-square"
-      url: "kms00129@naver.com"
+      url: "mailto:kms00129@naver.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       url: "https://kangmyoungseok.github.io/"
