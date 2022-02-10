@@ -10,6 +10,8 @@ toc_sticky: true
 toc_label: "g00gle2 문제 풀이"
 toc_icon: "bookmark"
 author_profile: true
+header:
+  teaser: /assets/images/webhacking.jpg
 ---
 
 💡 Webhacking.kr challenge g00gle2 문제에 대한 풀이입니다.
