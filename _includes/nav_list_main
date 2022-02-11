@@ -140,7 +140,7 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Android" %}
+                    {% if category[0] == "android" %}
                         <li><a href="/categories/android" class="">안드로이드 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
