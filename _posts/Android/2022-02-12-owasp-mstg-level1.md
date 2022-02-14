@@ -33,7 +33,7 @@ header:
 # 문제 풀이
 앱을 실행하면 다음과 같이 `Root detected!` 메시지와 함께 바로 꺼집니다.
 
-![image](https://user-images.githubusercontent.com/33647663/153803247-71aca247-a540-495b-abfa-7fc72fb8ba24.png){: .align-center}
+![image](https://user-images.githubusercontent.com/33647663/153807007-c7c35d47-4106-4656-a97a-268fae294027.png){: .align-center}
 
 jadx로 디컴파일하여 소스코드를 분석합니다.
 
@@ -139,9 +139,11 @@ sys.stdin.read()
 ```java
 public void verify(View view) {
         String str;
+        // 사용자의 입력값을 obj에 저장
         String obj = ((EditText) findViewById(R.id.edit_text)).getText().toString();
         AlertDialog create = new AlertDialog.Builder(this).create();
         if (a.a(obj)) {
+          //a.a(obj)가 참이면 성공
             create.setTitle("Success!");
             str = "This is the correct secret.";
         } else {
@@ -160,11 +162,7 @@ public void verify(View view) {
 
 ```
 
-a.a(obj) 함수를 보기위해서 a Class를 분석합니다. a클래스 내부를 보면, obj를 **bArr**과 비교를 해서 같으면 true를 반환합니다. 
-
-따라서 bArr가 우리가 찾는 secret 키 이며, 이는 다른 클래스의 함수와 Base64인코딩을 처리하여 평문으로는 읽히지 않도록 처리하고 있습니다.
-
-우리는 함수를 후킹하여 사용할 수 있기 때문에 이 이상은 코드를 분석할 필요 없이 bArr 를 만드는 **b("8d127684cbc37c17616d806cf50473cc")**와 **Base64.decode("5UJiFctbmgbDoLXmpL12mkno8HT4Lv8dlat8FxR2GOc=", 0)**를 동일하게 호출해서 secret 키를 알아내면 됩니다.
+a.a(obj) 함수를 보기위해서 a Class를 분석합니다. 아래에 a클래스 내부를 보면, obj를 **bArr**과 비교를 해서 같으면 true를 반환합니다. 
 
 ```java
 public class a {
@@ -175,6 +173,7 @@ public class a {
         } catch (Exception e) {
             Log.d("CodeCheck", "AES error:" + e.getMessage());
         }
+        // bArr와 obj가 같으면 true를 반환
         return str.equals(new String(bArr));
     }
 
@@ -190,18 +189,28 @@ public class a {
 
 ```
 
+따라서 bArr가 우리가 찾는 secret 키 이며, 이는 다른 클래스의 함수와 Base64인코딩을 처리하여 평문으로는 읽히지 않도록 처리하고 있습니다.
+
+우리는 함수를 후킹하여 사용할 수 있기 때문에 이 이상은 코드를 분석할 필요 없이 bArr 를 만드는 **sg.vantagepoint.a.a.a** 함수를 호출하며, 매개변수로 **b("8d127684cbc37c17616d806cf50473cc")**와 **Base64.decode("5UJiFctbmgbDoLXmpL12mkno8HT4Lv8dlat8FxR2GOc=", 0)**를 동일하게 설정하여 주면 secret 키를 알아낼 수 있습니다.
+
+
 다음은 위의 내용을 코드로 구현한 내용입니다. 
 secret1,2에 각각 bArr를 구하기 위해 필요한 값들을 그대로 만들어 주고, secret1,2를 이용해서 bArray를 다시 생성해 준다음, String으로 형 변환을 하여 출력해 줬습니다.
 
 ```javascript
+// secret1 생성
 var SecretClass = Java.use("sg.vantagepoint.uncrackable1.a");
-var Base64Class = Java.use("android.util.Base64");
 var secret1 = SecretClass.b("8d127684cbc37c17616d806cf50473cc");
+
+// secret2 생성
+var Base64Class = Java.use("android.util.Base64");
 var secret2 = Base64Class.decode("5UJiFctbmgbDoLXmpL12mkno8HT4Lv8dlat8FxR2GOc=", 0);
     
+// secret1,secret2를 이용해서 bArray 생성
 var EncryptClass = Java.use("sg.vantagepoint.a.a");
 var bArry = EncryptClass.a(secret1,secret2);
-    
+
+// bArray를 String 형으로 출력하여 secret 값 출력
 var StringClass = Java.use("java.lang.String");
 console.log(StringClass.$new(bArry));
 ```
