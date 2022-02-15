@@ -25,6 +25,10 @@ tags:
 
 ---
 
+💡 python venv 환경 설정에 대한 포스팅입니다.
+{: .notice--warning}
+
+
 # 개요  
 
 ![png](/assets/images/anaconda.png){: .align-center}{: width="80%" height="80%"}  
