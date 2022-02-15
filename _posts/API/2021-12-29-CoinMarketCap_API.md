@@ -21,7 +21,7 @@ CoinmarketCap은 코인에 대한 정보들을 리스팅한 가장 큰 사이트
 
 ![image](https://user-images.githubusercontent.com/33647663/148165944-423267fc-28f6-455e-8586-a3ab055a46fa.jpg){: .align-center}
 
-API를 사용하기 위해선 CoinMarketCap에 회원가입을 해서 API키를 발급받으셔야 하며 API키는  [링크](https://coinmarketcap.com/api/pricing/) 에서 받을 수 있습니다. 또한 API 사용법에 대한 공식문서는 [이곳]([Account](https://coinmarketcap.com/api/documentation/v1/#section/Quick-Start-Guide))을 참조하시면 됩니다.
+API를 사용하기 위해선 CoinMarketCap에 회원가입을 해서 API키를 발급받으셔야 하며 API키는  [링크](https://coinmarketcap.com/api/pricing/) 에서 받을 수 있습니다. 또한 API 사용법에 대한 공식문서는 [이곳](https://coinmarketcap.com/api/documentation/v1/#section/Quick-Start-Guide)을 참조하시면 됩니다.
 
 모든 API 기능에 대해서 전부 설명하지는 않고,  무료 API키로 사용가능한 기능 몇가지에 대해서만 관련 정보와 실행 결과에 대해서만 정리하겠습니다.
 
