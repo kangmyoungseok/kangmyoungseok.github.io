@@ -159,6 +159,13 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
+                    {% if category[0] == "pythonchallenge" %}
+                        <li><a href="/categories/pythonchallenge" class="">pythonchallenge.com ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                     {% if category[0] == "xxxx" %}
                         <li><a href="/categories/xxxxxx" class="">xxxxx ({{category[1].size}})</a></li>
                     {% endif %}
