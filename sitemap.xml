@@ -6,16 +6,14 @@ layout: null
     {% for post in site.posts %}
     <url>
         <loc>{{ site.url }}{{ post.url | remove: 'index.html' }}</loc>
-    </url>
-    {% endfor %}
-
-    {% for page in site.pages %}
-    {% if page.layout != nil %}
-    {% if page.layout != 'feed' %}
+        <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>{% endfor %}{% for page in site.pages %}
     <url>
         <loc>{{ site.url }}{{ page.url | remove: 'index.html' }}</loc>
-    </url>
-    {% endif %}
-    {% endif %}
-    {% endfor %}
+        <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>{% endfor %}
 </urlset>
