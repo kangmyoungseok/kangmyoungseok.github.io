@@ -69,7 +69,7 @@ $ conda info --envs
 ```python
 $ conda activate 가상환경이름
 -------------------------------------------
-$ conda active py38
+$ conda activate py38
 ```
 
 ![image](https://user-images.githubusercontent.com/33647663/153382833-d44fcbb7-1e12-480b-bab6-a631ff7af484.png)
