@@ -52,20 +52,21 @@ inject=<script>alert(1)</script>
 ![image](https://user-images.githubusercontent.com/33647663/156696124-cb5c9583-8018-49a6-beab-aa53b14477b1.png)
 
 ```md
-Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'nonce-8U+ozHAw9t1UUZIQnkvFyQlu+Hg='". Either the 'unsafe-inline' keyword, a hash ('sha256-bhHHL3z2vDgxUt0W3dWQOrprscmda2Y5pLsLg4GF+pI='), or a nonce ('nonce-...') is required to enable inline execution.
+Refused to execute inline script because it violates the following Content Security Policy directive: 
+"script-src 'nonce-8U+ozHAw9t1UUZIQnkvFyQlu+Hg='". Either the 'unsafe-inline' keyword, a hash 
+('sha256-bhHHL3z2vDgxUt0W3dWQOrprscmda2Y5pLsLg4GF+pI='), or a nonce ('nonce-...') is required to 
+enable inline execution.
 ```
 
 해석을 해보면, CSP 지시자인 `script-src 'nonce-8U+ozHAw9t1UUZIQnkvFyQlu+Hg=`를 위반했기 때문에 inline script가 실행되지 않은 것을 알 수 있습니다.
 
 따라서 이번 문제는 CSP를 우회하여 script가 실행되도록 해야 합니다.
 
-뒤에 붙은 추가적인 에러 내용을 우선 짚고 넘어가 보겠습니다.
+뒤에 붙은 추가적인 에러 내용을 우선 짚고 넘어가 보겠습니다. 다음의 설정을 하여 문제를 해결할 수 있다고 합니다.
 
 1. `unsafe-inline` 키워드를 사용
 2. hash ('sha256-bhHHL3z2vDgxUt0W3dWQOrprscmda2Y5pLsLg4GF+pI=')
 3. nonce 값 넣기
-
-를 하면 inline execution이 가능하다고 나옵니다.
 
 우선 1번의 내용은 서버 측에서 CSP 정책을 설정할 때, unsafe-inline 지시자를 추가하여, 지금처럼 inline script가 실행되는 것을 허용하라는 의미입니다. 현재 클라이언트(공격자) 입장에서 지시자를 바꿀 수 없기 때문에 가능하지 않습니다.
 
@@ -80,7 +81,7 @@ Refused to execute inline script because it violates the following Content Secur
 
 처음에는 어떻게 이 문제를 해결해야 할 지 몰라서 다음의 CSP 설정에 대한 검사를 해주는 사이트에 문제의 url을 입력해 봤습니다.
 
-https://csp-evaluator.withgoogle.com/
+[https://csp-evaluator.withgoogle.com/](https://csp-evaluator.withgoogle.com/){:target="_blank"}
 
 ![image](https://user-images.githubusercontent.com/33647663/156748832-de03d580-da4a-4e39-af91-9ed7d7c28f26.png)
 
@@ -102,7 +103,7 @@ https://csp-evaluator.withgoogle.com/
 
 ![image](https://user-images.githubusercontent.com/33647663/156750041-50f10d8d-c119-4cb8-9b26-d4fc0568e391.png)
 
-하지만 위의 방법도 결국에는 object가 해석되면서 script로 실행되어서 nonce 값이 없기 때문에 동일하게 실행되지 않습니다. 이 문제에서는 사용하지 못했지만, 나중에 다른 문제에서 `<script>` 를 필터링 한다든지 하는 경우에 사용가능한 방법 같습니다.
+하지만 위의 방법도 결국에는 object가 해석되면서 script로 실행되어서 nonce 값이 없기 때문에 동일하게 실행되지 않습니다. 이 문제에서는 사용하지 못했지만, 나중에 다른 문제에서 `<script>` 를 필터링 한다든지 하는 경우에 사용 가능한 방법 같습니다.
 
 그 다음은 base-uri를 이용한 방법입니다.문제에서 보면 `/script.js` 파일이 상대경로로 지정되어서 서버의 base-uri/script.js 파일이 실행되고 있습니다. 
 
