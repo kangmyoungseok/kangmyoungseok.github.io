@@ -19,9 +19,7 @@ permalink: /about/
   <font size="4.8em"> 😎<b> Introduction </b></font>
   <font size="2.5em">
   <ul>
-    <li> 이름: 강명석</li>
-    <li> 생일: 1998.01.29</li>
-    <li> 중앙대학교 컴퓨터공학과 17학번 ( 2017.01 ~ 재학 중 )</li>
+    <li> 중앙대학교 컴퓨터공학과 재학 중</li>
     <li> 주 언어: <b>Python</b></li>
     <li> 서브 언어: C, C++, Java, JSP, PHP</li>
   </ul>
@@ -58,8 +56,12 @@ permalink: /about/
     <ul><li>Title : 클러스터링을 이용한
 이더리움 기반 스캠 코인 탐지 연구</li></ul>
     <li> [논문] KMAC 경영혁신 연구논문 및 사례연구 공모전 장려상 (2021)</li>
+    <ul><li>Title : 가상자산 시장 신뢰도 향상을 위한 연구
+ [가상자산 투자사기 체크리스트를 중심으로]</li></ul>
+    <li> [논문] 정보보호학회 호남지부 추계학술대회 등재</li>
     <ul><li>Title : 온체인데이터 기반의 스캠코인 체크리스트</li></ul>
   </ul>
+  
   </font>
 </div>
 
