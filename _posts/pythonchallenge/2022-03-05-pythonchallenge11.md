@@ -5,8 +5,8 @@ categories:
 tags:
   - pythonchallenge
   - pyhon
-
-
+  - PIL
+  - Image
 
 toc: true
 toc_sticky: true
