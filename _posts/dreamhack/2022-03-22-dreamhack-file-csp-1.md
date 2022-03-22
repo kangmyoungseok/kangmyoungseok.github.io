@@ -82,7 +82,7 @@ def live_csp():
 
 결과적으로 /test페이지에서 CSP 문법에 맞게 CSP를 넘겨주면, live 페이지에서 해당 CSP 정보가 헤더에 포함되어 보여지며 이때, a,b 스크립트는 실행이 안되고, c,d는 실행이 되는 CSP여야 하는 것입니다.
 
-## 문제풀이
+# 문제풀이
 이 문제는 다른 조건이 없기 때문에 해시 값을 이용하여, 주어진 해시 값을 가진 스크립트만 실행이 되도록 해줍니다. 
 
 우선 각각의 스크립트의 해시 값을 얻기 위해서 다음과 같이 CSP를 설정해 줍니다.
@@ -129,9 +129,7 @@ crossorigin="anonymous"></script>
 
 ```
 Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'nonce-1'". Either the 'unsafe-inline' keyword, a hash ('sha256-P9oV1Sc7O1Di7wEu1Q0fc9Jb2+DopNb6840c7E5XuNY='), or a nonce ('nonce-...') is required to enable inline execution.
-```
 
-```
 CSP 지시자를 위반했기 때문에 inline script 실행을 거부한다.
 현재 CSP 지시자는 'nonce-1'이다.
 unsafe-inline 키워드,
@@ -139,14 +137,15 @@ hash : ('sha256-P9oV1Sc7O1Di7wEu1Q0fc9Jb2+DopNb6840c7E5XuNY=')
 또는 nonce ('nonce-...')값이 인라인 스크립트를 실행하기 위해서 필요하다.
 ```
 
-여기에서 이 문제를 풀기 위해서 사용할 부분은 hash 부분입니다. 서버에서 실행을 허용할 스크립트의 해시 값을 미리 구해놓고, 해당 해시 값과 동일한 스크립트만 실행 가능하도록 하는 기능이며, 지금 문제에서 서버의 CSP 지시자를 설정할 수 있기 때문에 다음과 같이 설정해 준다면 위에서 차단된 스크립트 하나가 실행 가능합니다
+
+여기에서 이 문제를 풀기 위해서 사용할 부분은 hash 부분입니다. 서버에서 실행을 허용할 스크립트의 해시 값을 미리 구해놓고, 해당 해시 값과 동일한 스크립트만 실행 가능하도록 하는 기능이며, 지금 문제에서 서버의 CSP 지시자를 설정할 수 있기 때문에 위의 오류에서 출력해준 해시 값을 다음과 같이 설정해 준다면 위에서 차단된 스크립트 하나가 실행 가능합니다
 
 ```
 http://host1.dreamhack.games:16863/live?csp=script-src : 'sha256-P9oV1Sc7O1Di7wEu1Q0fc9Jb2+DopNb6840c7E5XuNY='
 ```
 
 
-위에서 설정한 CSP는 **a** 스크립트의 해시 값으로, a 스크립트만 실행이 가능한 것을 볼 수 있습니다. 
+위에서 설정한 CSP는 **a** 스크립트의 해시 값으로, **a** 스크립트만 실행이 가능한 것을 볼 수 있습니다. 
 
 ![image](https://user-images.githubusercontent.com/33647663/159411410-43a52473-1475-4b3e-990e-9034b8fb93f4.png)
 
