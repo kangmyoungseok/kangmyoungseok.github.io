@@ -89,10 +89,11 @@ def live_csp():
 
 ```http://host1.dreamhack.games:19954/live?csp=script-src%20%27nonce-1%27```
 
-```js
+```javascript
 script-src 'nonce-1'
 
-//http://host1.dreamhack.games:19954/live?csp=script-src%20%27nonce-1%27
+//http://host1.dreamhack.games:19954/live?csp=script-src 'nonce-1'
+
 ```
 
 CSP를 nonce-1로 지정하면, 해당 스크립트의 nonce값을 1로 주어야 실행 가능하다는 의미 입니다. 실행 결과는 다음과 같이 4개의 스크립트가 모두 실행되지 않습니다.
@@ -128,7 +129,9 @@ crossorigin="anonymous"></script>
 콘솔에 출력된 오류 메시지 중 하나를 가져오면 다음과 같습니다.
 
 ```
-Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'nonce-1'". Either the 'unsafe-inline' keyword, a hash ('sha256-P9oV1Sc7O1Di7wEu1Q0fc9Jb2+DopNb6840c7E5XuNY='), or a nonce ('nonce-...') is required to enable inline execution.
+Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'nonce-1'". 
+Either the 'unsafe-inline' keyword, a hash ('sha256-P9oV1Sc7O1Di7wEu1Q0fc9Jb2+DopNb6840c7E5XuNY='), 
+or a nonce ('nonce-...') is required to enable inline execution.
 
 CSP 지시자를 위반했기 때문에 inline script 실행을 거부한다.
 현재 CSP 지시자는 'nonce-1'이다.
