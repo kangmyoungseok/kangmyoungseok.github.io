@@ -10,6 +10,7 @@ toc_sticky: true
 toc_label: "file-csp-1번 문제 풀이"
 toc_icon: "bookmark"
 author_profile: true
+hidden: true
 ---
 
 💡 dreamhack file-csp-1번 문제에 대한 풀이입니다.
