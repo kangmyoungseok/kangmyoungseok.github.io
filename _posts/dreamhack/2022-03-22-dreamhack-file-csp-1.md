@@ -1,0 +1,168 @@
+---
+title: "[dreamhack] file-csp-1번 문제 풀이"
+categories:
+  - dreamhack
+tags:
+  - dreamhack
+  - csp
+toc: true
+toc_sticky: true
+toc_label: "file-csp-1번 문제 풀이"
+toc_icon: "bookmark"
+author_profile: true
+---
+
+💡 dreamhack file-csp-1번 문제에 대한 풀이입니다.
+{: .notice--warning}
+
+# 문제
+
+![image](https://user-images.githubusercontent.com/33647663/159409028-552fd4c0-8fb2-4fbc-9250-07f3cb04d14c.png)
+
+문제에서 요구하는 조건에 맞게 CSP를 작성하면 되는 문제입니다. 
+코드레벨에서 요구하는 조건은 아래와 같습니다.
+
+```python
+@APP.route('/test', methods=['GET', 'POST'])
+def test_csp():
+    global CSP
+    if request.method == 'POST':
+        csp = request.form.get('csp')
+        # start bot..
+        try:
+            options = webdriver.ChromeOptions()
+            for _ in ['headless', 'window-size=1920x1080', 'disable-gpu', 'no-sandbox', 'disable-dev-shm-usage']:
+                options.add_argument(_)
+            driver = webdriver.Chrome('/chromedriver', options=options)
+            driver.implicitly_wait(3)
+            driver.set_page_load_timeout(3)
+            driver.get(f'http://localhost:8000/live?csp={quote(csp)}')
+            try:
+                a = driver.execute_script('return a()');
+            except:
+                a = 'error'
+            try:
+                b = driver.execute_script('return b()');
+            except:
+                b = 'error'
+            try:
+                c = driver.execute_script('return c()');
+            except Exception as e:
+                c = 'error'
+                c = e
+            try:
+                d = driver.execute_script('return $(document)');
+            except:
+                d = 'error'
+
+            if a == 'error' and b == 'error' and c == 'c' and d != 'error':
+                return FLAG
+
+            return f'Try again!, {a}, {b}, {c}, {d}'
+        except Exception as e:
+            return f'An error occured!, {e}'
+
+    return render_template('check.html')
+```
+
+/test 페이지에서 csp 정보를 입력하면, 봇이 ```http://localhost:8000/live?csp={quote(csp)}```로 접근합니다. 그 이후 총 4개의 script를 실행하며, 그 결과로써 a,b 는 실행이 안되고, c,d는 실행이 되도록 하면 플래그를 출력해 주는 문제입니다.
+
+그리고 /live페이지는 다음과 같이 구성되어 있습니다.
+
+```python
+@APP.route('/live', methods=['GET'])
+def live_csp():
+    csp = request.args.get('csp', '')
+    resp = make_response(render_template('csp.html'))
+    resp.headers.set('Content-Security-Policy', csp)
+    return resp
+```
+
+파라미터로 준 csp 정보를 **Content-Security-Policy** 값으로 그대로 넣어 줌으로써 사용자가 CSP 설정을 할 수 있습니다. 
+
+결과적으로 /test페이지에서 CSP 문법에 맞게 CSP를 넘겨주면, live 페이지에서 해당 CSP 정보가 헤더에 포함되어 보여지며 이때, a,b 스크립트는 실행이 안되고, c,d는 실행이 되는 CSP여야 하는 것입니다.
+
+## 문제풀이
+이 문제는 다른 조건이 없기 때문에 해시 값을 이용하여, 주어진 해시 값을 가진 스크립트만 실행이 되도록 해줍니다. 
+
+우선 각각의 스크립트의 해시 값을 얻기 위해서 다음과 같이 CSP를 설정해 줍니다.
+
+```http://host1.dreamhack.games:19954/live?csp=script-src%20%27nonce-1%27```
+
+```js
+script-src 'nonce-1'
+
+//http://host1.dreamhack.games:19954/live?csp=script-src%20%27nonce-1%27
+```
+
+CSP를 nonce-1로 지정하면, 해당 스크립트의 nonce값을 1로 주어야 실행 가능하다는 의미 입니다. 실행 결과는 다음과 같이 4개의 스크립트가 모두 실행되지 않습니다.
+
+
+![image](https://user-images.githubusercontent.com/33647663/159410295-d9b071a4-2680-42a0-b72d-d7b4fb11c73d.png)
+
+
+그 이유는 현재 문제에서 csp.html 파일을 보면 스크립트의 nonce는 a,d는 없고, b,c는 "i_am_super_random"로 설정되어 있기 때문에 모든 스크립트가 실행되지 않습니다.
+
+```html
+<head>
+<!-- block me -->
+<script>
+	function a() { return 'a'; }
+</script>
+<!-- block me -->
+	<script nonce="i_am_super_random">
+	function b() { return 'b'; }
+</script>
+<!-- allow me -->
+	<script nonce="i_am_super_random">
+	function c() { return 'c'; }
+</script>
+
+<!-- allow me -->
+<script
+src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+crossorigin="anonymous"></script>
+```
+
+콘솔에 출력된 오류 메시지 중 하나를 가져오면 다음과 같습니다.
+
+```
+Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'nonce-1'". Either the 'unsafe-inline' keyword, a hash ('sha256-P9oV1Sc7O1Di7wEu1Q0fc9Jb2+DopNb6840c7E5XuNY='), or a nonce ('nonce-...') is required to enable inline execution.
+```
+
+```
+CSP 지시자를 위반했기 때문에 inline script 실행을 거부한다.
+현재 CSP 지시자는 'nonce-1'이다.
+unsafe-inline 키워드,
+hash : ('sha256-P9oV1Sc7O1Di7wEu1Q0fc9Jb2+DopNb6840c7E5XuNY=')
+또는 nonce ('nonce-...')값이 인라인 스크립트를 실행하기 위해서 필요하다.
+```
+
+여기에서 이 문제를 풀기 위해서 사용할 부분은 hash 부분입니다. 서버에서 실행을 허용할 스크립트의 해시 값을 미리 구해놓고, 해당 해시 값과 동일한 스크립트만 실행 가능하도록 하는 기능이며, 지금 문제에서 서버의 CSP 지시자를 설정할 수 있기 때문에 다음과 같이 설정해 준다면 위에서 차단된 스크립트 하나가 실행 가능합니다
+
+```
+http://host1.dreamhack.games:16863/live?csp=script-src : 'sha256-P9oV1Sc7O1Di7wEu1Q0fc9Jb2+DopNb6840c7E5XuNY='
+```
+
+
+위에서 설정한 CSP는 **a** 스크립트의 해시 값으로, a 스크립트만 실행이 가능한 것을 볼 수 있습니다. 
+
+![image](https://user-images.githubusercontent.com/33647663/159411410-43a52473-1475-4b3e-990e-9034b8fb93f4.png)
+
+이제 문제에서 요구하는 조건인 a,b 의 해시 값은 넣지 않고, c,d 스크립트의 해시 값을 넣어서 c,d만 실행가능하도록 해줍니다.
+
+```php
+// c의 해시 : 'sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8='
+// d의 해시 : 'sha256-l1OSKODPRVBa1/91J7WfPisrJ6WCxCRnKFzXaOkpsY4='
+
+script-src 'sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=' 'sha256-l1OSKODPRVBa1/91J7WfPisrJ6WCxCRnKFzXaOkpsY4='
+```
+
+위와 같이 csp 지시자를 설정했더니 성공적으로 c,d만 실행이 되었습니다. 
+
+![image](https://user-images.githubusercontent.com/33647663/159411671-2f8c8156-1897-43b4-b5e5-6ce4dca316ae.png)
+
+이제 verify 페이지에서 동일하게 csp를 넘겨주면 문제가 풀립니다.
+
+![image](https://user-images.githubusercontent.com/33647663/159412743-1d8e4280-4edf-4744-97f1-1d3b22a0c116.png)
