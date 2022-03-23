@@ -5,10 +5,10 @@ main:
   - title: "About Me"
     url: /about/
   - title: "Category"
-  #  url: "/categories/list"
-  #- title: "All Post"
     url: "/categories/"
   - title: "Tags"
     url: /tags/
   - title: "Year"
     url: "/year-archive/"
+  #  url: "/categories/list"
+  #- title: "All Post"  
