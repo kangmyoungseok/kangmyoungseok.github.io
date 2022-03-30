@@ -3,7 +3,7 @@ title: "[dreamhack] ColorfulMemo 문제 풀이"
 categories:
   - dreamhack
 tags:
-  - dreamhack
+  - dreamhack   
   - css injection
   - ssrf
   - LFI
@@ -24,11 +24,11 @@ hidden: true
 
 우선 문제를 풀기에 앞서 웹페이지의 기능은 다음과 같습니다.
 
-1. Write
+**Write**
 
 ![image](https://user-images.githubusercontent.com/33647663/160804268-91cab590-393d-41ed-ac79-2e2a9cad684c.png)
 
-2. Read & Report
+**Read & Report**
 
 ![image](https://user-images.githubusercontent.com/33647663/160804363-b7f0fcb9-933f-4e8e-b8fa-0ca235b3769e.png)
 
@@ -71,7 +71,7 @@ if($_SERVER["REMOTE_ADDR"] == '127.0.0.1' || $_SERVER["REMOTE_ADDR"] == '::1'){
     $id = $_GET['id'];
     $mysqli = new mysqli('localhost','user','password','colorfulmemo');
     // I believe admin 
-    $result = $mysqli->query('SELECT adminCheck FROM memo WHERE id = '.$id);
+    $result = $mysqli->query('SELECT adminCheck FROM memo WHERE id = '.$id); // SQL Injection에 취약함
     if($result){
         $row = mysqli_fetch_row($result);
         if($row){
@@ -203,13 +203,12 @@ while(1):
 ```
 
 
-1. 게시글 작성한 뒤 해당 글을 읽을 때, check.php파일이 호출되는 모습
+**게시글 작성한 뒤 해당 글을 읽을 때, check.php파일이 호출되는 모습**
 
 ![image](https://user-images.githubusercontent.com/33647663/160810280-8c1f9114-9a16-4de9-8579-b686a47bdada.png)
 
-
-2. report 후, 웹 쉘이 실행되어 쉘을 획득한 모습
+**report 후, 웹 쉘이 실행되어 쉘을 획득한 모습**
 ![image](https://user-images.githubusercontent.com/33647663/160810477-542bafb9-0b84-4331-acab-4fdf41b60899.png)
 
-3. root 디렉터리에 flag 파일이 보임
+**root 디렉터리에 flag 파일이 보임**
 ![image](https://user-images.githubusercontent.com/33647663/160810665-b67b3615-7c2a-457f-8278-1a969d7030f6.png)
