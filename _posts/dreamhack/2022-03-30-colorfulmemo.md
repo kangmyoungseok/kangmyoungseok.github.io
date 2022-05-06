@@ -13,7 +13,6 @@ toc_sticky: true
 toc_label: "ColorfulMemo 문제 풀이"
 toc_icon: "bookmark"
 author_profile: true
-hidden: true
 ---
 
 💡  [2022 Spring GoN Open Qual CTF] ColorfulMemo 문제에 대한 풀이입니다.
