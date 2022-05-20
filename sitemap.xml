@@ -6,47 +6,10 @@ layout: null
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-    <url>
-        <loc>https://kangmyoungseok.github.io/</loc>
-        <lastmod>2022-02-06T00:20:57+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.00</priority>
-    </url>
-
-    <url>
-        <loc>https://kangmyoungseok.github.io/about/</loc>
-        <lastmod>2022-02-06T00:20:57+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.85</priority>
-    </url>
-
-    <url>
-        <loc>https://kangmyoungseok.github.io/categories/</loc>
-        <lastmod>2022-02-06T00:20:57+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.85</priority>
-    </url>
-
-    <url>
-        <loc>https://kangmyoungseok.github.io/tags/</loc>
-        <lastmod>2022-02-06T00:20:57+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.85</priority>
-    </url>
-
-    <url>
-        <loc>https://kangmyoungseok.github.io/year-archive/</loc>
-        <lastmod>2022-02-06T00:20:57+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.85</priority>
-    </url>
     {% for post in site.posts %}
     <url>
         <loc>{{ site.url }}{{ post.url }}</loc>
         <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.5</priority>
     </url>
     {% endfor %}
 </urlset>
