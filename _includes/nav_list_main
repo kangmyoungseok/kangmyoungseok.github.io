@@ -126,8 +126,8 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "security-tech" %}
-                        <li><a href="/categories/security-tech" class="">보안 기술 ({{category[1].size}})</a></li>
+                    {% if category[0] == "oscp" %}
+                        <li><a href="/categories/oscp" class="">OSCP ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
