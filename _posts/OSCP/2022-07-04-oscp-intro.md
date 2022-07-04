@@ -1,5 +1,5 @@
 ---
-title: "[OSCP] Introduction"
+title: "[OSCP] 자격증"
 categories:
   - oscp
 tags:
