@@ -11,6 +11,8 @@ toc_sticky: true
 toc_label: "OSCP 소개"
 toc_icon: "bookmark"
 author_profile: true
+header:
+  teaser: /assets/images/oscp.png
 ---
 
 💡 OSCP 자격증 준비 및 소개에 관한 포스팅입니다.
