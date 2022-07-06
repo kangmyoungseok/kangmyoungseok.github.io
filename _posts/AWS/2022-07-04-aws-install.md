@@ -218,9 +218,10 @@ $rm -f index.html
 
 ```sh
 # Mysql 설치
-$sudo apt install mysql-server -y
+$sudo apt-get install apt-transport-https
 
-$sudo ufw allow mysql
+$sudo curl -LsS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash
+$sudo apt install mariadb-server
 $sudo systemctl start mysql
 $sudo systemctl enable mysql
 
