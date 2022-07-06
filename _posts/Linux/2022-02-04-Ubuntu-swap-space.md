@@ -50,7 +50,7 @@ author_profile: true
   아래의 내용 파일에 추가
 
   ```md
-  swapfile none swap sw 0 0
+  /swapfile swap swap defaults 0 0
   ```
 
 <br><br>
