@@ -133,8 +133,8 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "fuzzing" %}
-                        <li><a href="/categories/fuzzing" class="">퍼징 ({{category[1].size}})</a></li>
+                    {% if category[0] == "penetration-testing" %}
+                        <li><a href="/categories/penetration-testing" class="">penetration testing ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>

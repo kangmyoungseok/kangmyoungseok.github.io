@@ -1,11 +1,11 @@
 ---
-title: "퍼징"
+title: "모의해킹"
 layout: archive
-permalink: categories/fuzzing
+permalink: categories/penetration-testing
 author_profile: true
 sidebar_main: true
 ---
 
 
-{% assign posts = site.categories.fuzzing %}
+{% assign posts = site.categories.penetration-testing %}
 {% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}
