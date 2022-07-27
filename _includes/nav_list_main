@@ -180,11 +180,19 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
+                    {% if category[0] == "Hack-The-Box" %}
+                        <li><a href="/categories/Hack-The-Box" class="">Hack The Box ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                     {% if category[0] == "xxxx" %}
                         <li><a href="/categories/xxxxxx" class="">xxxxx ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
+
 
             <!------------------------ 6. CTF ------------------------------>
             <span class="nav__sub-title">CTF</span>
