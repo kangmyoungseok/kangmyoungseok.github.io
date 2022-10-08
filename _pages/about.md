@@ -40,8 +40,10 @@ permalink: /about/
   <font size="4.8em"> 📚<b> 프로젝트 </b></font>
   <font size="2.5em">
   <ul>
-    <li> AI를 활용한 스캠코인 탐지 플랫폼 ( 2021.09 ~ 2021.12 )</li>
-    <li> GUI로 구현한 Chess Game</li>
+    <li> <a href = "https://github.com/kangmyoungseok/RugPull-Prediction-AI"> AI를 활용한 스캠코인 탐지 플랫폼 ( 2021.09 ~ 2021.12 )</a></li>
+    <li> <a href = "https://github.com/WebH3ll"> CAUTion 여름방학 웹 해킹 프로젝트</a></li>
+    <li> <a href = "https://github.com/CAU-Project/"> 3학년 전공 과목 프로젝트</a></li>
+    
   </ul>
   </font>
 </div>
