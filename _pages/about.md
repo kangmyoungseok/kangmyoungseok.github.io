@@ -52,8 +52,8 @@ permalink: /about/
   <font size="4.8em"> 🏆<b> 수상사항 </b></font>
   <font size="2.5em">
   <ul>
-    <li> [공모전] TS 보안 허점을 찾아라 장려상(2022)
-    <li> [공모전] 블록체인 난제해결 챌린지 대상(<strong>과학기술정보통신부장관상</strong>)(2022)
+    <li> [공모전] TS 보안 허점을 찾아라 장려상(2022)</li>
+    <li> [공모전] 블록체인 난제해결 챌린지 대상(<strong>과학기술정보통신부장관상</strong>)(2022)</li>
     <li> [논문] Kisa AI + Security 논문 공모전 우수상(<strong>한국인터넷진흥원장상</strong>) (2021)</li>
     <ul><li>Title : 머신러닝을 이용한 탈중앙화 거래소 상의 러그풀 예측</li></ul>
     <li> [논문] 정보처리학회 ACK 2021 은상 (2021)</li>
