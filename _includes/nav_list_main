@@ -119,6 +119,13 @@
             <span class="nav__sub-title">Security</span>
             <ul>
                 {% for category in site.categories %}
+                    {% if category[0] == "ctf" %}
+                        <li><a href="/categories/ctf" class="">CTF ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                     {% if category[0] == "security-issue" %}
                         <li><a href="/categories/security-issue" class="">보안 동향 ({{category[1].size}})</a></li>
                     {% endif %}
@@ -145,6 +152,7 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+
             
 
 
@@ -194,24 +202,7 @@
             </ul>
 
 
-            <!------------------------ 6. CTF ------------------------------>
-            <span class="nav__sub-title">CTF</span>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "xxxxx" %}
-                        <li><a href="/categories/xxxx" class="">xxxxx ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "xxxx" %}
-                        <li><a href="/categories/xxxxxx" class="">xxxxx ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-
-            <!------------------------ 7. ETC ------------------------------>
+            <!------------------------ 6. ETC ------------------------------>
             <span class="nav__sub-title">ETC</span>
             <ul>
                 {% for category in site.categories %}
